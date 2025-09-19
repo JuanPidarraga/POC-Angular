@@ -1,0 +1,6 @@
+<h1>Productos</h1>
+<div *ngIf="loading">Cargando...</div>
+<div class="grid" *ngIf="!loading">
+  <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
+</div>
+
