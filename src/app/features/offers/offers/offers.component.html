@@ -1,0 +1,17 @@
+<section class="offers container">
+  <h1>Ofertas</h1>
+  <p class="lead">Promociones y descuentos especiales</p>
+
+  <div class="grid">
+    <article *ngFor="let o of offers" class="offer-card">
+      <div>
+        <img [src]="o.image" [alt]="o.title" />
+      </div>
+      <div class="offer-body">
+        <h3>{{ o.title }}</h3>
+        <div class="offer-discount">{{ o.discount }}</div>
+        <p>{{ o.description }}</p>
+      </div>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+.products-root { padding: 0.5rem 0 2rem; }
+.products-root h1 { margin: 0 0 1rem; font-size: 1.75rem; }
+
+/* Loading / empty */
+.loading, .empty { padding: 2rem; text-align: center; color: #6b7280; }
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  align-items: start;
+}

@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router,NavigationEnd, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './app/layout/header/header.component';
 import { FooterComponent } from './app/layout/footer/footer.component';
 import { HeroComponent } from './app/hero/hero.component';
+import { filter, Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, HeroComponent],
+  imports: [CommonModule,RouterOutlet, HeaderComponent, FooterComponent],
   template: `
     <header class="header">
       <div class="container">
@@ -15,8 +17,7 @@ import { HeroComponent } from './app/hero/hero.component';
       </div>
     </header>
 
-    <main class="container" style="padding-top:1rem;">
-      <app-hero></app-hero>
+    <main class="container " style="padding-top:1rem;">
       <router-outlet></router-outlet>
     </main>
 
@@ -27,4 +28,6 @@ import { HeroComponent } from './app/hero/hero.component';
     </footer>
   `
 })
-export class AppComponent {}
+export class AppComponent {
+
+}

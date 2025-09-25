@@ -8,7 +8,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: Inter, Roboto, Arial, sans-serif;
-  background: #f6f7fb;
+  background: #fff;
   color: #222;
 }
 
@@ -25,7 +25,6 @@ app-root > main {
 }
 
 .container {
-  max-width: 1100px;
   margin: 0 auto;
   padding: 1rem;
 }

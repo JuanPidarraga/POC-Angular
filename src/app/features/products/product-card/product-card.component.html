@@ -1,5 +1,5 @@
 <article class="product-card">
-  <img [src]="product.image || 'assets/images/placeholder.png'" [alt]="product.title">
+  <img [src]="product.thumbnail || 'assets/images/placeholder.png'" [alt]="product.title">
   <div class="product-title">{{ product.title }}</div>
   <div class="product-price">${{ product.price }}</div>
   <p *ngIf="product.description">{{ product.description }}</p>

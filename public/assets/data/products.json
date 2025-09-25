@@ -3,5 +3,5 @@
   { "id": "p2", "title": "Tenis Nike", "price": 9.99, "image": "/assets/data/images/a3f1f723_d3d1_443f_b405_c5a96d9a0da3.jpg", "description": "Tenis para el día a día." },
   { "id": "p3", "title": "Taza Stanley", "price": 34.5, "image": "/assets/data/images/imagen_2025-03-14_163026134.png", "description": "Taza elegante para diario." },
   { "id": "p4", "title": "Casco", "price": 19.99, "image": "assets/data/images/61jh2aF1cjL._AC_SX466_.jpg", "description": "Cascos cómodos y ligeros." },
-  { "id": "p5", "title": "Taza Stanley", "price": 34.5, "image": "/assets/data/images/imagen_2025-03-14_163026134.png", "description": "Taza elegante para diario." }
+  { "id": "p5", "title": "Camisetas", "price": 14.99, "image": "/assets/data/images/sMoJw7k09CeytKNzE820.jpg", "description": "Camisetas de alta calidad." }
 ]

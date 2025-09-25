@@ -1,8 +1,14 @@
+// src/app/features/products/product.model.ts
 export interface Product {
-  id: string;
+  id: number;
   title: string;
-  price: number;
   description?: string;
-  image?: string;
+  price: number;
+  discountPercentage?: number;
+  rating?: number;
+  stock?: number;
+  brand?: string;
   category?: string;
+  thumbnail?: string;
+  images?: string[];
 }

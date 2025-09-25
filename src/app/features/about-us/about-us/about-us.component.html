@@ -1,0 +1,85 @@
+<div class="about-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">Conoce Nuestra Historia</h1>
+        <p class="hero-subtitle">
+          En MyShop creemos que todos merecen acceso a productos de calidad al mejor precio. 
+          Nuestra misión es hacer tus compras más fáciles, seguras y satisfactorias.
+        </p>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-icons">
+          <div class="icon-item icon-1">🛒</div>
+          <div class="icon-item icon-2">⭐</div>
+          <div class="icon-item icon-3">💖</div>
+          <div class="icon-item icon-4">🏆</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission-section">
+    <div class="container">
+      <h2 class="section-title">Nuestra Misión</h2>
+      <div class="mission-content">
+        <div class="mission-text">
+          <p class="mission-main">
+            En MyShop nos dedicamos a conectar a las personas con los productos que aman, 
+            creando una experiencia de compra excepcional que supere las expectativas.
+          </p>
+          <p class="mission-secondary">
+            Creemos que cada cliente merece atención personalizada, productos de calidad 
+            y precios justos. Por eso trabajamos incansablemente para mejorar cada día.
+          </p>
+        </div>
+        <div class="mission-stats">
+          <div class="stat-item">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Clientes Satisfechos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Productos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99%</div>
+            <div class="stat-label">Satisfacción</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="values-section">
+    <div class="container">
+      <h2 class="section-title">Nuestros Valores</h2>
+      <div class="values-grid">
+        <div class="value-card" *ngFor="let value of values">
+          <div class="value-icon">{{ value.icon }}</div>
+          <h3 class="value-title">{{ value.title }}</h3>
+          <p class="value-description">{{ value.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">¿Listo para Descubrir Más?</h2>
+        <p class="cta-subtitle">
+          Únete a miles de clientes satisfechos y descubre por qué MyShop es su tienda favorita
+        </p>
+        <div>
+          <button class="btn" routerLink="/offers">Ver productos</button>
+          <button class="btn" routerLink="/contact">Contáctanos</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
