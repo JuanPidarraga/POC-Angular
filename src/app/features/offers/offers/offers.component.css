@@ -1,7 +1,37 @@
-.offers .lead { color: #374151; margin-bottom: 1rem; }
-.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap:1rem; }
-.offer-card { background:#fff; border-radius:8px; padding:0.75rem; box-shadow:0 1px 6px rgba(0,0,0,0.06); display:flex; gap:0.75rem; align-items:flex-start; }
-.offer-card img { width:110px; height:110px; object-fit:cover; border-radius:6px; }
-.offer-body h3 { margin:0 0 .25rem 0; font-size:1.05rem; }
-.offer-discount { color:#b91c1c; font-weight:700; margin-bottom:0.5rem; }
-.offer-card .btn { margin-top:0.5rem; display:inline-block; }
+.offers .lead {
+  color: #374151;
+  margin-bottom: 1rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.offer-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.75rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+.offer-card img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.offer-body h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.05rem;
+}
+.offer-discount {
+  color: #b91c1c;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.offer-card .btn {
+  margin-top: 0.5rem;
+  display: inline-block;
+}

@@ -1,7 +1,9 @@
 <section class="products-root container" aria-labelledby="products-heading">
   <div class="products-header">
     <div class="search-wrapper">
-      <label class="visually-hidden" for="product-search">Buscar productos</label>
+      <label class="visually-hidden" for="product-search"
+        >Buscar productos</label
+      >
       <input
         id="product-search"
         type="search"
@@ -9,25 +11,82 @@
         [formControl]="searchControl"
         class="input-search"
         autocomplete="off"
-        aria-label="Buscar productos" />
+        aria-label="Buscar productos"
+      />
 
-      <button *ngIf="searchControl.value" class="btn-clear" (click)="clearSearch()" aria-label="Limpiar búsqueda">✕</button>
+      <button
+        *ngIf="searchControl.value"
+        class="btn-clear"
+        (click)="clearSearch()"
+        aria-label="Limpiar búsqueda"
+      ></button>
 
-      <div class="search-loading" *ngIf="loading" aria-hidden="true">⏳</div>
+      <div class="search-loading" *ngIf="loading$ | async" aria-hidden="true">
+        <span class="sr-only"></span>
+        <svg class="spinner" viewBox="0 0 50 50" role="img" aria-hidden="true">
+          <circle
+            class="path"
+            cx="25"
+            cy="25"
+            r="20"
+            fill="none"
+            stroke-width="4"
+          ></circle>
+        </svg>
+      </div>
     </div>
   </div>
 
-  <ng-container *ngIf="products$ | async as products; else loadingTpl">
-    <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="error$ | async as err" class="error">{{ err }}</div>
 
-    <div *ngIf="products.length === 0 && !error" class="empty">No se encontraron productos.</div>
+  <ng-container *ngIf="products$ | async as products; else loadingTpl">
+    <div *ngIf="products.length === 0" class="empty">
+      No se encontraron productos.
+    </div>
 
     <div class="grid" *ngIf="products.length > 0" role="list">
       <app-product-card
         role="listitem"
         *ngFor="let p of products; trackBy: trackById"
-        [product]="p">
+        [product]="p"
+      >
       </app-product-card>
+    </div>
+
+    <!-- PAGINATION CONTROLS -->
+    <div class="pagination" *ngIf="total$ | async as total">
+      <div class="pagination-left">
+        <button
+          (click)="prevPage()"
+          [disabled]="((currentPage$ | async) || 0) === 0"
+        >
+          Anterior
+        </button>
+        <button
+          (click)="nextPage()"
+          [disabled]="
+            ((currentPage$ | async) || 0) >= ((totalPages$ | async) || 1) - 1
+          "
+        >
+          Siguiente
+        </button>
+      </div>
+
+      <div class="pagination-center">
+        Página {{ ((currentPage$ | async) || 0) + 1 }} de
+        {{ (totalPages$ | async) || 1 }} — {{ total || 0 }} resultados
+      </div>
+
+      <div class="pagination-right">
+        <label for="page-size">Mostrar</label>
+        <select
+          id="page-size"
+          (change)="setPageSize(+$any($event.target).value)"
+        >
+          <option *ngFor="let s of pageSizeOptions" [value]="s">{{ s }}</option>
+        </select>
+        <span>por página</span>
+      </div>
     </div>
   </ng-container>
 
@@ -35,5 +94,3 @@
     <div class="loading">Cargando productos…</div>
   </ng-template>
 </section>
-
-

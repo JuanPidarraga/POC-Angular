@@ -2,35 +2,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../features/products/product.model';
-import { Observable, map } from 'rxjs';
+import { map, Observable } from 'rxjs';
+
+export interface PagedResponse {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
+}
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  // Ejemplo con DummyJSON
   private base = 'https://dummyjson.com';
 
   constructor(private http: HttpClient) {}
 
-  // lista todos (nota: dummyjson devuelve { products: [...] })
+    // lista completa (
   getAll(): Observable<Product[]> {
-    return this.http.get<{products: Product[]}>(`${this.base}/products`)
-      .pipe(map(r => r.products));
+    return this.http.get<{ products: Product[] }>(`${this.base}/products`)
+      .pipe(map(res => res.products ?? []));
   }
 
-  // obtener paginado
-  getPage(limit = 10, skip = 0): Observable<Product[]> {
-    return this.http.get<{products: Product[]}>(`${this.base}/products?limit=${limit}&skip=${skip}`)
-      .pipe(map(r => r.products));
+  // paginado general
+  getPage(limit = 12, skip = 0): Observable<PagedResponse> {
+    return this.http.get<PagedResponse>(`${this.base}/products?limit=${limit}&skip=${skip}`);
   }
 
-  // busqueda
-  search(q: string): Observable<Product[]> {
-    return this.http.get<{products: Product[]}>(`${this.base}/products/search?q=${encodeURIComponent(q)}`)
-      .pipe(map(r => r.products));
+  // búsqueda con paginación
+  search(q: string, limit = 12, skip = 0): Observable<PagedResponse> {
+    return this.http.get<PagedResponse>(`${this.base}/products/search?q=${encodeURIComponent(q)}&limit=${limit}&skip=${skip}`);
   }
 
-  // obtener por id
-  getById(id: number): Observable<Product> {
+  // obtener por id 
+  getById(id: number) {
     return this.http.get<Product>(`${this.base}/products/${id}`);
   }
 }

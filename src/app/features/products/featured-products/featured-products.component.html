@@ -1,0 +1,28 @@
+<section class="featured-root container" aria-labelledby="featured-heading">
+
+  <ng-container *ngIf="featured$ | async as products; else featuredLoading">
+    <div *ngIf="products.length === 0" class="featured-empty">No hay productos destacados.</div>
+
+    <div class="featured-grid" *ngIf="products.length > 0" role="list">
+      <app-product-card
+        role="listitem"
+        *ngFor="let p of products; trackBy: trackById"
+        [product]="p">
+      </app-product-card>
+    </div>
+  </ng-container>
+
+  <ng-template #featuredLoading>
+    <!-- skeleton pequeño para 4 cards -->
+    <div class="featured-grid">
+      <div class="skeleton-card" *ngFor="let s of [1,2,3,4]">
+        <div class="skeleton-img"></div>
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line medium"></div>
+      </div>
+    </div>
+  </ng-template>
+
+  <div *ngIf="error" class="featured-error">{{ error }}</div>
+</section>
+

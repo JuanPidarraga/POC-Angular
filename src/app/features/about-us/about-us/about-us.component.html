@@ -20,38 +20,75 @@
     </div>
   </section>
 
-  <!-- Mission Section -->
-  <section class="mission-section">
-    <div class="container">
-      <h2 class="section-title">Nuestra Misión</h2>
-      <div class="mission-content">
-        <div class="mission-text">
-          <p class="mission-main">
-            En MyShop nos dedicamos a conectar a las personas con los productos que aman, 
-            creando una experiencia de compra excepcional que supere las expectativas.
-          </p>
-          <p class="mission-secondary">
-            Creemos que cada cliente merece atención personalizada, productos de calidad 
-            y precios justos. Por eso trabajamos incansablemente para mejorar cada día.
-          </p>
+<section class="mission-section improved-mission" aria-labelledby="mission-title">
+  <div class="container">
+    <header class="mission-header">
+      <h2 id="mission-title" class="section-title">Nuestra Misión</h2>
+      <p class="section-intro">Hacer la compra diaria más simple: productos útiles, procesos claros y envíos confiables.</p>
+    </header>
+
+    <div class="mission-grid">
+      <!-- Texto principal + valores -->
+      <div class="mission-left">
+        <p class="mission-main">
+          En <strong>MyShop</strong> nos dedicamos a conectar a las personas con los productos que aman,
+          creando una experiencia de compra clara, segura y satisfactoria.
+        </p>
+
+        <p class="mission-secondary">
+          Atención al cliente, calidad y transparencia en precios son el centro de nuestro trabajo.
+          Seleccionamos cuidadosamente los productos y mejoramos continuamente nuestros procesos para darte la mejor experiencia.
+        </p>
+
+        <div class="values-row" role="list" aria-label="Valores de la empresa">
+          <article class="value-pill" role="listitem">
+            <div class="value-pill-icon" aria-hidden="true">✅</div>
+            <div>
+              <h4>Calidad</h4>
+              <p class="muted">Productos seleccionados por su durabilidad y acabado.</p>
+            </div>
+          </article>
+
+          <article class="value-pill" role="listitem">
+            <div class="value-pill-icon" aria-hidden="true">💸</div>
+            <div>
+              <h4>Precio justo</h4>
+              <p class="muted">Ofertas constantes y condiciones claras.</p>
+            </div>
+          </article>
+
+          <article class="value-pill" role="listitem">
+            <div class="value-pill-icon" aria-hidden="true">🚚</div>
+            <div>
+              <h4>Envío rápido</h4>
+              <p class="muted">Despachos ágiles y seguimiento del pedido.</p>
+            </div>
+          </article>
         </div>
-        <div class="mission-stats">
-          <div class="stat-item">
-            <div class="stat-number">50K+</div>
-            <div class="stat-label">Clientes Satisfechos</div>
+      </div>
+
+      <!-- Stats verticales -->
+      <aside class="mission-right" aria-hidden="false">
+        <div class="stats-stack" role="list" aria-label="Estadísticas">
+          <div class="stat-card" role="listitem">
+            <div class="stat-number">50<span class="stat-suffix">K+</span></div>
+            <div class="stat-label">Clientes<br> Satisfechos</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number">10K+</div>
+
+          <div class="stat-card" role="listitem">
+            <div class="stat-number">10<span class="stat-suffix">K+</span></div>
             <div class="stat-label">Productos</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number">99%</div>
+
+          <div class="stat-card" role="listitem">
+            <div class="stat-number">99<span class="stat-suffix">%</span></div>
             <div class="stat-label">Satisfacción</div>
           </div>
         </div>
-      </div>
+      </aside>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Values Section -->
   <section class="values-section">

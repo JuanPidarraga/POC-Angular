@@ -1,0 +1,77 @@
+.featured-root {
+  padding: 1.5rem 0;
+}
+.featured-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.featured-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.see-all {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* grid compacto para la homepage */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+/* small skeleton visuals */
+.skeleton-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.75rem;
+  box-shadow: 0 6px 18px rgba(10, 25, 47, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 200px;
+}
+.skeleton-img {
+  height: 120px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f0f2f7, #e6eefc, #f0f2f7);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f0f2f7, #e6eefc, #f0f2f7);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+.skeleton-line.short {
+  width: 45%;
+  height: 14px;
+}
+.skeleton-line.medium {
+  width: 75%;
+  height: 14px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.featured-empty,
+.featured-error {
+  color: #64748b;
+  padding: 1rem 0;
+  text-align: center;
+}

@@ -22,11 +22,6 @@
   transition: all 0.25s ease;
 }
 
-/* icono opcional dentro */
-.btn-cart .icon {
-  margin-right: 0.5rem;
-  font-size: 1.1rem;
-}
 
 /* hover → fondo azul, texto blanco */
 .btn-cart:hover {

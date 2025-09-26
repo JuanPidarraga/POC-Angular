@@ -436,3 +436,126 @@
     width: 200px;
   }
 }
+
+/* ---- Mission improved ---- */
+.improved-mission {
+  padding: 80px 0;
+  
+}
+
+.mission-header { text-align: center; margin-bottom: 36px; }
+.mission-header .section-title {
+  font-size: 2.1rem;
+  margin: 0 0 8px 0;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+.section-intro {
+  color: var(--text-light);
+  max-width: 80ch;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+/* grid principal */
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Left column: texto + valores */
+.mission-left { padding-right: 10px; }
+.mission-main {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  line-height: 1.6;
+  max-width: 66ch;
+}
+.mission-secondary {
+  color: var(--text-light);
+  margin-bottom: 20px;
+  max-width: 66ch;
+  font-size: 0.98rem;
+}
+
+/* Valores como pills */
+.values-row {
+  display: flex;
+  gap: 16px;
+  margin: 36px 0;
+  flex-wrap: wrap;
+}
+.value-pill {
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  background: #fff;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(10,25,47,0.04);
+  min-width: 220px;
+  flex: 1 1 220px;
+}
+.value-pill-icon {
+  width:44px;
+  height:44px;
+  border-radius: 10px;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+  color: #fff;
+  font-size: 1.25rem;
+  flex-shrink:0;
+}
+.value-pill h4 { margin:0; font-size:1rem; font-weight:700; }
+.value-pill .muted { margin:4px 0 0 0; color:var(--text-light); font-size:0.92rem; }
+
+/* CTA */
+.mission-cta { margin-top: 18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+
+/* Right column: stats verticales (cards) */
+.mission-right { display:flex; justify-content:center; align-items:flex-start; }
+.stats-stack {
+  display:flex; flex-direction:column; gap:18px; align-items:stretch;
+  width:100%;
+}
+.stat-card {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding: 20px;
+  border-radius: 14px;
+  background: linear-gradient(180deg,#ffffff,#fbfcff);
+  box-shadow: 0 10px 30px rgba(10,25,47,0.05);
+  border-left: 6px solid rgba(74,115,255,0.12);
+  text-align:center;
+  min-height: 100px;
+}
+.stat-number {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  letter-spacing: -0.02em;
+}
+.stat-suffix { font-size: .7rem; margin-left: 4px; color: var(--text-light); font-weight:600; }
+.stat-label { font-size: 0.95rem; color: var(--text-light); margin-top: 6px; font-weight:600; }
+
+/* hover ligero para las stat-cards */
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(10,25,47,0.08);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+/* responsive: apilar columnas en pantallas pequeñas */
+@media (max-width: 880px) {
+  .mission-grid { grid-template-columns: 1fr; }
+  .mission-right { order: 2; margin-top: 18px; }
+  .mission-left { order: 1; }
+  .values-row { gap: 12px; }
+}
+
+/* pequeños ajustes tipográficos */
+.improved-mission .section-title { font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
+.mission-main { font-size: clamp(1rem, 1.6vw, 1.15rem); }
