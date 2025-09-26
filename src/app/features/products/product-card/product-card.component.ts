@@ -6,6 +6,7 @@ import { Product } from '../product.model';
   selector: 'app-product-card',
   standalone: true,
   imports: [CommonModule],
+  styleUrls: ['./product-card.component.css'],
   templateUrl: './product-card.component.html'
 })
 export class ProductCardComponent {

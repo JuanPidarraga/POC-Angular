@@ -108,6 +108,7 @@ app-root > main {
   flex-direction: column;
   gap: 0.5rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  min-height: 450px;
 }
 
 .product-card img {
@@ -135,10 +136,6 @@ app-root > main {
   cursor: pointer;
 }
 
-.btn--primary {
-  background: #2563eb;
-  color: #fff;
-}
 
 .hero {
   text-align: center;
@@ -204,6 +201,4 @@ app-root > main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.btn--primary:hover {
-  background: #1d4ed8;
-}
+

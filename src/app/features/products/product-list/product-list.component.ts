@@ -1,33 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+// src/app/features/products/product-list/product-list.component.ts
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../product.model';
 import { ProductCardComponent } from '../product-card/product-card.component';
-import { catchError, map, Observable, of, startWith } from 'rxjs';
-
+import { Observable, of } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+  startWith,
+  tap,
+  catchError,
+  map
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, ProductCardComponent],
+  imports: [CommonModule, ReactiveFormsModule, ProductCardComponent],
   templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css'],
 })
-
 export class ProductListComponent {
-  // stream de productos + estado
+  // nonNullable evita que valueChanges emita null -> ahora es Observable<string>
+  searchControl = new FormControl('', { nonNullable: true });
+
   products$: Observable<Product[]>;
-  loading$ = of(false); // solo útil si quieres subscribirte al loading desde template
+  loading = false;
+  error = '';
 
   constructor(private productService: ProductService) {
-    // mapear y proteger contra errores
-    this.products$ = this.productService.getAll().pipe(
-      // si tu servicio devuelve { products: [] }, ajusta con map(r => r.products)
+    this.products$ = this.searchControl.valueChanges.pipe(
+      startWith(''),                    // emitir valor inicial (string)
+      debounceTime(300),
+      distinctUntilChanged(),
+      tap(() => { this.error = ''; this.loading = true; }),
+      switchMap((q: string) => {
+        const term = q.trim();
+        if (!term) {
+          return this.productService.getAll();
+        }
+        return this.productService.search(term);
+      }),
+      // si la API devuelve { products: [...] } mapea a array
       map(res => Array.isArray(res) ? res : (res as any).products ?? []),
-      startWith([]), // opcional: da valor inicial
       catchError(err => {
-        console.error('[ProductList] getAll error', err);
+        console.error('[ProductList] search error', err);
+        this.error = 'No se pudieron cargar los productos. Intenta nuevamente.';
         return of([] as Product[]);
-      })
+      }),
+      tap(() => { this.loading = false; })
     );
+  }
+
+  trackById(_: number, item: Product) {
+    return item.id;
+  }
+
+  clearSearch() {
+    // al usar nonNullable, setValue('') siempre acepta string
+    this.searchControl.setValue('');
   }
 }

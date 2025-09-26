@@ -1,22 +1,38 @@
-<section aria-labelledby="products-heading" class="products-root container">
-  <h1 id="products-heading">Productos</h1>
+<section class="products-root container" aria-labelledby="products-heading">
+  <div class="products-header">
+    <div class="search-wrapper">
+      <label class="visually-hidden" for="product-search">Buscar productos</label>
+      <input
+        id="product-search"
+        type="search"
+        placeholder="Buscar por nombre, categoría..."
+        [formControl]="searchControl"
+        class="input-search"
+        autocomplete="off"
+        aria-label="Buscar productos" />
 
-  <!-- Async pipe maneja la suscripción y desencadena CD en OnPush -->
+      <button *ngIf="searchControl.value" class="btn-clear" (click)="clearSearch()" aria-label="Limpiar búsqueda">✕</button>
+
+      <div class="search-loading" *ngIf="loading" aria-hidden="true">⏳</div>
+    </div>
+  </div>
+
   <ng-container *ngIf="products$ | async as products; else loadingTpl">
-    <div *ngIf="products.length === 0; else gridTpl" class="empty">
-      No hay productos por el momento.
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <div *ngIf="products.length === 0 && !error" class="empty">No se encontraron productos.</div>
+
+    <div class="grid" *ngIf="products.length > 0" role="list">
+      <app-product-card
+        role="listitem"
+        *ngFor="let p of products; trackBy: trackById"
+        [product]="p">
+      </app-product-card>
     </div>
   </ng-container>
 
   <ng-template #loadingTpl>
     <div class="loading">Cargando productos…</div>
-  </ng-template>
-
-  <ng-template #gridTpl>
-    <div class="grid" role="list">
-      <!-- si ProductCard es standalone, está importado en el componente -->
-      <app-product-card *ngFor="let p of (products$ | async)" [product]="p"></app-product-card>
-    </div>
   </ng-template>
 </section>
 
